@@ -31,7 +31,6 @@ test:
   pre:
     - bin/prepare
 
-
 deployment:
   newest-version:
     branch: master
