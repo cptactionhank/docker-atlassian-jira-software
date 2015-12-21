@@ -8,13 +8,8 @@ REGEX_ERROR   = /ERROR|ERR/
 REGEX_SEVERE  = /SEVERE|FATAL/
 REGEX_STARTUP = /Server startup in \d+ ms/
 REGEX_FILTER  = Regexp.compile (Regexp.union [
-  %r{org\.apache\.catalina\.loader\.WebappClassLoaderBase\.checkThreadLocalMapForLeaks\ The\ web\ application\ \[ROOT\]\ created\ a\ ThreadLocal\ with\ key\ of\ type\ \[.*\]\ \(value\ \[.*\]\)\ and\ a\ value\ of\ type\ \[.*\]\ \(value\ \[.*\]\)\ but\ failed\ to\ remove\ it\ when\ the\ web\ application\ was\ stopped\.\ Threads\ are\ going\ to\ be\ renewed\ over\ time\ to\ try\ and\ avoid\ a\ probable\ memory\ leak\.},
-  # For some reason when setting up the database the indexing path is not set
-  # yielding the following errors.
-  %r{\[c\.a\.jira\.upgrade\.ConsistencyCheckImpl\]\ Indexing\ is\ turned\ on,\ but\ index\ path\ \[null\]\ invalid\ \-\ disabling\ indexing},
-  %r{\[c\.a\.j\.issue\.index\.DefaultIndexManager\]\ File\ path\ not\ set\ \-\ not\ indexing},
-  %r{\[o\.e\.g\.b\.e\.i\.util\.concurrent\.RunnableTimedExecution\]\ Closing\ runnable\ for\ context\ NonValidatingOsgiBundleXmlApplicationContext\(bundle=com\.pyxis\.greenhopper\.jira,\ config=osgibundle:/META\-INF/spring/\*\.xml\)\ did\ not\ finish\ in\ 10000ms;\ consider\ taking\ a\ snapshot\ and\ then\ shutdown\ the\ VM\ in\ case\ the\ thread\ still\ hangs}
-])
+    %r{org\.apache\.catalina\.loader\.WebappClassLoaderBase\.checkThreadLocalMapForLeaks\ The\ web\ application\ \[ROOT\]\ created\ a\ ThreadLocal\ with\ key\ of\ type\ \[.*\]\ \(value\ \[.*\]\)\ and\ a\ value\ of\ type\ \[.*\]\ \(value\ \[.*\]\)\ but\ failed\ to\ remove\ it\ when\ the\ web\ application\ was\ stopped\.\ Threads\ are\ going\ to\ be\ renewed\ over\ time\ to\ try\ and\ avoid\ a\ probable\ memory\ leak\.},
+  ])
 
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |file| require file }
 
@@ -60,7 +55,7 @@ RSpec.configure do |config|
   Capybara.configure do |conf|
     conf.register_driver :poltergeist_debug do |app|
       Capybara::Poltergeist::Driver.new app, timeout: timeout,
-        # we should't care about javascript errors since we did not make any
+                # we should't care about javascript errors since we did not make any
         # implementation, but only deliver the software packages as best
         # effort and this is more an Atlassian problem.
         js_errors: false,
@@ -71,7 +66,7 @@ RSpec.configure do |config|
     # not startup a Rails server.
     conf.run_server = false
     conf.default_driver = :poltergeist_debug
-    conf.default_wait_time = timeout
+    conf.default_max_wait_time = timeout
 
     # conf.ignore_hidden_elements = false
     # conf.visible_text_only = false

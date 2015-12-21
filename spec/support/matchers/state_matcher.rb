@@ -14,12 +14,12 @@ module Docker
       end
 
       def matches?(actual)
-        parent_matches?(actual.json['State'])
+        parent_matches? actual.json['State']
       end
 
       def description
         described_items = surface_descriptions_in(expected)
-        improve_hash_formatting "include state#{to_sentence(described_items)}"
+        improve_hash_formatting "include state #{described_items}"
       end
 
       def failure_message
