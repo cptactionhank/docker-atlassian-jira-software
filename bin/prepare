@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo "Obtaining Altassian JIRA version information..."
+echo "Obtaining Altassian JIRA Software version information..."
 
 # Obtain the currently latest version of Atlassian JIRA version defined by the
 # Dockerfile in this repository.
@@ -12,12 +12,17 @@ CURRENT_VERSION=$(sed -nr 's/ENV JIRA_VERSION[[:space:]]*(.+)/\1/p' Dockerfile)
 curl -Ls 'https://my.atlassian.com/download/feeds/current/jira-software.json' | sed 's/downloads(\(.*\))/\1/g' | jq -r '.[] | select(.description | test("TAR\\.GZ Archive")) | ("" + .zipUrl + " " + .version)' | while read -r URL VERSION
 do
 
+	if [ "x${CURRENT_VERSION}" == "x" ]; then
+		echo "No EAP versions found... exitting..."
+		exit 0
+	fi
+
 	echo "Found versions:"
 	echo "  Current: ${CURRENT_VERSION}"
 	echo "  Latest:  ${VERSION}"
 	echo ""
 
-	echo "Preparing branch for version new Atlassian JIRA version"
+	echo "Preparing branch for version new Atlassian JIRA Software version"
 
 
 	# Edit the `Dockerfile` by changing the current version to the new obtained
