@@ -1,14 +1,47 @@
 ---
 layout: default
+title: JIRA ❤ Docker
+excerpt: Atlassian JIRA wrapped in a Docker image.
+slug: documentation
 ---
 
-<article>
-  <section class="alert alert-danger" role="alert">
-    <strong>Heads up!</strong> This is very much work in progress but it is expected to be the same configuration method as Atlassian JIRA Core, so swing by the <a class="alert-link" href="https://cptactionhank.github.io/docker-atlassian-jira">Atlassian JIRA Configurator</a> for more help.
-  </section>
+<section class="jumbotron">
+  <div class="container">
+    <h1>
+      {{ page.title }}
+    </h1>
+    <p class="lead">
+      {{ page.excerpt }}
+    </p>
+    <p>
+      <a href="https://github.com/{{site.author.github}}/{{site.repo.github}}/issues">
+        <img src="https://img.shields.io/github/issues/{{site.author.github}}/{{site.repo.github}}.svg?style=social"></a>
+      <a href="https://github.com/{{site.author.github}}/{{site.repo.github}}/stargazers">
+        <img src="https://img.shields.io/github/stars/{{site.author.github}}/{{site.repo.github}}.svg?style=social"></a>
+      <a href="https://github.com/{{site.author.github}}/{{site.repo.github}}/network">
+        <img src="https://img.shields.io/github/forks/{{site.author.github}}/{{site.repo.github}}.svg?style=social"></a>
+      <a href="https://hub.docker.com/r/{{site.author.dockerhub}}/{{site.repo.docker}}">
+        <img src="https://img.shields.io/docker/stars/{{site.author.dockerhub}}/{{site.repo.docker}}.svg?style=social"></a>
+      <a href="https://hub.docker.com/r/{{site.author.dockerhub}}/{{site.repo.docker}}">
+        <img src="https://img.shields.io/docker/pulls/{{site.author.dockerhub}}/{{site.repo.docker}}.svg?style=social"></a>
+    </p>
+  </div>
+</section>
 
-  <section>
-    <p><a href="https://circleci.com/gh/cptactionhank/docker-atlassian-jira-software"><img alt="Build Status" src="https://img.shields.io/circleci/project/cptactionhank/docker-atlassian-jira-software/master.svg"></a> <a href="https://github.com/cptactionhank/docker-atlassian-jira-software"><img alt="Open Issues" src="https://img.shields.io/github/issues/cptactionhank/docker-atlassian-jira-software.svg"></a> <a href="https://github.com/cptactionhank/docker-atlassian-jira-software"><img alt="Stars on GitHub" src="https://img.shields.io/github/stars/cptactionhank/docker-atlassian-jira-software.svg"></a> <a href="https://github.com/cptactionhank/docker-atlassian-jira-software"><img alt="Forks on GitHub" src="https://img.shields.io/github/forks/cptactionhank/docker-atlassian-jira-software.svg"></a> <a href="https://registry.hub.docker.com/u/cptactionhank/atlassian-jira-software"><img alt="Stars on Docker Hub" src="https://img.shields.io/docker/stars/cptactionhank/atlassian-jira-software.svg"></a> <a href="https://registry.hub.docker.com/u/cptactionhank/atlassian-jira-software"><img alt="Pulls on Docker Hub" src="https://img.shields.io/docker/pulls/cptactionhank/atlassian-jira-software.svg"></a></p>
-  </section>
+<div class="container s2-docs-container">
+  <div class="row">
+    <div class="col-md-9" role="main">
 
-</article>
+      {% include sections/introduction.html %}
+      {% include sections/configuration.html %}
+      {% include sections/fast_lane.html %}
+      {% include sections/slow_road_intro.html %}
+      {% include sections/system_properties.html %}
+      {% include sections/run_configurations.html %}
+
+    </div>
+    <div class="col-md-3" role="complementary">
+      {% include nav/generate.html %}
+    </div>
+  </div>
+</div>
