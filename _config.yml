@@ -7,15 +7,15 @@ description: > # this means to ignore newlines until "baseurl:"
   line in _config.yml. It will appear in your document head meta (for
   Google search results) and in your feed.xml site description.
 
-baseurl: "/docker-atlassian-jira" # the subpath of your site, e.g. /blog/
+baseurl: "/docker-atlassian-jira-software" # the subpath of your site, e.g. /blog/
 url: "http://cptactionhank.github.io" # the base hostname & protocol for your site
 
 repo:
-  github: docker-atlassian-jira
-  docker: atlassian-jira
+  github: docker-atlassian-jira-software
+  docker: atlassian-jira-software
 
 author:
-  name: Martin Jensen
+  name: Martin Aksel Jensen
   email: martin@25144754.dk
   url: "http://25144754.dk" # the base hostname & protocol for your site
   # facebook: cptactionhank

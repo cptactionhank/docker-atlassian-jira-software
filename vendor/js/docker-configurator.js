@@ -12,7 +12,7 @@ app.filter('prefix', function () {
 
 app.run(function($rootScope) {
 
-  // configuration constants for the various Atlassian JIRA docker images
+  // configuration constants for the various Atlassian JIRA Software docker images
   // where each key defines the most recent version that had that specific
   // configuration. For example the key 5.8.2 defines the most recent
   // image that supported that configuration and finding a configuration for
@@ -23,11 +23,6 @@ app.run(function($rootScope) {
     // define the default fall-back value of Docker image configuration
     // settings, by using the highest available unicode character.
     '': {
-      home: '/var/local/atlassian/jira',
-      install: '/usr/local/atlassian/jira',
-      java: 7
-    },
-    '6.4.6': {
       home: '/var/atlassian/jira',
       install: '/opt/atlassian/jira',
       java: 8
@@ -38,7 +33,7 @@ app.run(function($rootScope) {
     home: 'not set',
     install: 'not set',
     version: { name:'latest' },
-    java: 'latest',
+    java: 'not set',
     port: 8080
   };
 
@@ -62,7 +57,7 @@ app.controller('ConfigurationController', function($rootScope, $scope, $http) {
   // populate the controllers model with the first 1000 available tags from
   // the Docker Hub repository.
   $http
-    .get('//crossorigin.me/https://hub.docker.com/v2/repositories/cptactionhank/atlassian-jira/tags/?page_size=1000')
+    .get('//crossorigin.me/https://hub.docker.com/v2/repositories/cptactionhank/atlassian-jira-software/tags/?page_size=1000')
     .success(function(data, status) {
       $scope.tags = data.results.sort(function(a, b) {
         return String.naturalCompare(a.name, b.name);
