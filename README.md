@@ -1,6 +1,6 @@
 # Atlassian JIRA Software in a Docker container
 
-> Version 7.0.5
+> Version 7.0.9
 
 [![Build Status](https://img.shields.io/circleci/project/cptactionhank/docker-atlassian-jira-software/7.0.4.svg)](https://circleci.com/gh/cptactionhank/docker-atlassian-jira-software) [![Open Issues](https://img.shields.io/github/issues/cptactionhank/docker-atlassian-jira-software.svg)](https://github.com/cptactionhank/docker-atlassian-jira-software) [![Stars on GitHub](https://img.shields.io/github/stars/cptactionhank/docker-atlassian-jira-software.svg)](https://github.com/cptactionhank/docker-atlassian-jira-software) [![Forks on GitHub](https://img.shields.io/github/forks/cptactionhank/docker-atlassian-jira-software.svg)](https://github.com/cptactionhank/docker-atlassian-jira-software) [![Stars on Docker Hub](https://img.shields.io/docker/stars/cptactionhank/atlassian-jira.svg)](https://registry.hub.docker.com/u/cptactionhank/atlassian-jira) [![Pulls on Docker Hub](https://img.shields.io/docker/pulls/cptactionhank/atlassian-jira.svg)](https://registry.hub.docker.com/u/cptactionhank/atlassian-jira)
 
