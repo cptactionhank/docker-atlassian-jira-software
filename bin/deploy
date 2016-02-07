@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # Prepare Git committer information
-git config --global user.email "circleci@circleci"
-git config --global user.name "Circle CI Automated Builder"
+git config user.email "circleci@circleci"
+git config user.name "Circle CI Automated Builder"
 
 # Obtain the currently latest version of Atlassian JIRA version defined by the
 # Dockerfile in this repository.
@@ -51,13 +51,11 @@ else
 
 	git checkout --orphan "${VERSION}"
 
-	# Perform changes specifying branch information in various files in the
-	# directory where needed. For example the readme updates the Circle-CI Build
-	# status shield to the new branch keeping the build information in sync.
-	echo "Updating files with new branch information"
-
-	sed --in-place README.md \
-	    --expression "s/master.svg/${VERSION}.svg/g"
+	# We do not want to include README.md in version branches since the latest
+	# built branch from the Docker Hub will use that README.md which could be
+	# misleading. Contributing is also taken out to ensure a single place for
+	# the most up-to-date information.
+	rm --recursive --force "README.md" "CONTRIBUTING.md"
 
 	# Perform initial commit with the current directory as is (ie. prepared for
 	# the new version branch).
