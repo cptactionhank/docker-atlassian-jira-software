@@ -1,37 +1,35 @@
+[![Travis CI Build Status](https://img.shields.io/travis/cptactionhank/docker-atlassian-jira-software/master.svg?label=Travis%20CI)](https://travis-ci.org/cptactionhank/docker-atlassian-jira-software/branches) [![CircleCI Build Status](https://img.shields.io/circleci/project/cptactionhank/docker-atlassian-jira-software/master.svg?label=CircleCI)](https://circleci.com/gh/cptactionhank/docker-atlassian-jira-software) [![Open Issues](https://img.shields.io/github/issues/cptactionhank/docker-atlassian-jira-software.svg)](https://github.com/cptactionhank/docker-atlassian-jira-software/issues) [![Stars on GitHub](https://img.shields.io/github/stars/cptactionhank/docker-atlassian-jira-software.svg)](https://github.com/cptactionhank/docker-atlassian-jira-software/stargazers) [![Forks on GitHub](https://img.shields.io/github/forks/cptactionhank/docker-atlassian-jira-software.svg)](https://github.com/cptactionhank/docker-atlassian-jira-software/network) [![Stars on Docker Hub](https://img.shields.io/docker/stars/cptactionhank/atlassian-jira.svg)](https://hub.docker.com/r/cptactionhank/atlassian-jira/) [![Pulls on Docker Hub](https://img.shields.io/docker/pulls/cptactionhank/atlassian-jira.svg)](https://hub.docker.com/r/cptactionhank/atlassian-jira/) [![Friends of cptactionhank](https://img.shields.io/badge/donation-PayPal-blue.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=maage@dotmaage.dk&item_name=Friends+of+cptactionhank&item_number=Open+Source+Donation)
+
 # Atlassian JIRA Software in a Docker container
 
-> Version 7.0.10
+This is a containerized installation of Atlassian JIRA Software with Docker, and it's a match made in heaven for us all to enjoy. The aim of this image is to keep the installation as straight forward as possible, but with a few Docker related twists. You can get started by clicking the appropriate link below and reading the documentation.
 
-[![Build Status](https://img.shields.io/circleci/project/cptactionhank/docker-atlassian-jira-software/7.0.4.svg)](https://circleci.com/gh/cptactionhank/docker-atlassian-jira-software) [![Open Issues](https://img.shields.io/github/issues/cptactionhank/docker-atlassian-jira-software.svg)](https://github.com/cptactionhank/docker-atlassian-jira-software) [![Stars on GitHub](https://img.shields.io/github/stars/cptactionhank/docker-atlassian-jira-software.svg)](https://github.com/cptactionhank/docker-atlassian-jira-software) [![Forks on GitHub](https://img.shields.io/github/forks/cptactionhank/docker-atlassian-jira-software.svg)](https://github.com/cptactionhank/docker-atlassian-jira-software) [![Stars on Docker Hub](https://img.shields.io/docker/stars/cptactionhank/atlassian-jira.svg)](https://registry.hub.docker.com/u/cptactionhank/atlassian-jira) [![Pulls on Docker Hub](https://img.shields.io/docker/pulls/cptactionhank/atlassian-jira.svg)](https://registry.hub.docker.com/u/cptactionhank/atlassian-jira)
+* [Atlassian JIRA Core](https://cptactionhank.github.io/docker-atlassian-jira)
+* [Atlassian JIRA Software](https://cptactionhank.github.io/docker-atlassian-jira-software-software)
+* [Atlassian JIRA ServiceDesk](https://cptactionhank.github.io/docker-atlassian-service-desk)
+* [Atlassian Confluence](https://cptactionhank.github.io/docker-atlassian-confluence)
 
-* [Atlassian JIRA Core](https://github.com/cptactionhank/docker-atlassian-jira)
-* [Atlassian JIRA Software](https://github.com/cptactionhank/docker-atlassian-jira-software)
-* [Atlassian JIRA ServiceDesk](https://github.com/cptactionhank/docker-atlassian-service-desk)
-* [Atlassian JIRA Confluence](https://github.com/cptactionhank/docker-atlassian-confluence)
-
-A containerized installation of Atlassian JIRA Software setup with a goal of keeping the installation as default as possible, but with a few Docker related twists.
-
-Want to help out, check out the contribution section.
+If you want to help out, you can check out the contribution section further down.
 
 ## I'm in the fast lane! Get me started
 
-To quickly get started with running a JIRA Software instance, first run the following command:
+To quickly get started running a JIRA Core instance, use the following command:
 ```bash
-docker run --detach --publish 8080:8080 cptactionhank/atlassian-jira-software:7.0.4
+docker run --detach --publish 8080:8080 cptactionhank/atlassian-jira-software:latest
 ```
 
-Then use your browser to navigate to `http://[dockerhost]:8080` and finish the configuration.
-
-## The slower road to get started
-
-For a more in-depth documentation on how to get started please visit the website made for this purpose. [cptactionhank.github.io/docker-atlassian-jira-software](https://cptactionhank.github.io/docker-atlassian-jira-software)
+Then simply navigate your preferred browser to `http://[dockerhost]:8080` and finish the configuration.
 
 ## Contributions
 
-This has been made with the best intentions and current knowledge and thus it shouldn't be expected to be flawless. However you can support this repository with best-practices and other additions. Circle-CI has been setup to build the Dockerfile and run acceptance tests on the Atlassian JIRA Software image to ensure it is working.
+This image has been created with the best intentions and an expert understanding of docker, but it should not be expected to be flawless. Should you be in the position to do so, I request that you help support this repository with best-practices and other additions.
 
-Circle-CI has been setup to automatically deploy new version branches when successfully building a new version of Atlassian JIRA Software in the `master` branch and serves as the base. Furthermore an `eap` branch has been setup to automatically build and commit updates to ensure the `eap` branch contains the latest version of Atlassian JIRA Software Early Access Preview.
+Travis CI and CircleCI has been configured to build the Dockerfile and run acceptance tests on the Atlassian JIRA Software image to ensure it is working.
 
-Out of date documentation, lack of tests, etc. you can help out by either creating an issue and open a discussion or sending a pull request with modifications to the appropriate branch.
+Travis CI has additionally been configured to automatically deploy new version branches when successfully building a new version of Atlassian JIRA Software in the `master` branch and serves as the base. Furthermore an `eap` branch has been setup to automatically build and commit updates to ensure this branch contains the latest version of Atlassian JIRA Software Early Access Preview.
 
-Acceptance tests are performed by Circle-CI with Ruby using the RSpec, Capybara, and PhantomJS frameworks.
+If you see out of date documentation, lack of tests, etc., you can help out by either
+- creating an issue and opening a discussion, or
+- sending a pull request with modifications (remember to read [contributing guide](https://github.com/cptactionhank/docker-atlassian-jira-software/blob/master/CONTRIBUTING.md) before.)
+
+Continuous Integration and Continuous Delivery is made possible with the great services from [GitHub](https://github.com), [Travis CI](https://travis-ci.org/), and [CircleCI](https://circleci.com/) written in [Ruby](https://www.ruby-lang.org/), using [RSpec](http://rspec.info/), [Capybara](https://jnicklas.github.io/capybara/), and [PhantomJS](http://phantomjs.org/) frameworks.
