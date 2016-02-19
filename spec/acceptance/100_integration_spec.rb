@@ -2,12 +2,12 @@ require 'timeout'
 require 'spec_helper'
 
 describe 'Atlassian JIRA with Embedded Database' do
-  include_examples 'an acceptable JIRA instance', 'using an embedded database'
+	include_examples 'an acceptable JIRA Service Desk instance', 'using an embedded database'
 end
 
 describe 'Atlassian JIRA with PostgreSQL 9.3 Database' do
-  include_examples 'an acceptable JIRA instance', 'using a postgresql database' do
-    before :all do
+	include_examples 'an acceptable JIRA Service Desk instance', 'using a postgresql database' do
+		before :all do
       Docker::Image.create fromImage: 'postgres:9.3'
       # Create and run a PostgreSQL 9.3 container instance
       @container_db = Docker::Container.create image: 'postgres:9.3'
@@ -24,12 +24,12 @@ describe 'Atlassian JIRA with PostgreSQL 9.3 Database' do
     after :all do
       @container_db.remove force: true, v: true unless @container_db.nil? || ENV['CIRCLECI']
     end
-  end
+	end
 end
 
 describe 'Atlassian JIRA with MySQL 5.6 Database' do
-  include_examples 'an acceptable JIRA instance', 'using a mysql database' do
-    before :all do
+	include_examples 'an acceptable JIRA Service Desk instance', 'using a mysql database' do
+		before :all do
       Docker::Image.create fromImage: 'mysql:5.6'
       # Create and run a MySQL 5.6 container instance
       @container_db = Docker::Container.create image: 'mysql:5.6', env: ['MYSQL_ROOT_PASSWORD=mysecretpassword']
@@ -46,5 +46,5 @@ describe 'Atlassian JIRA with MySQL 5.6 Database' do
     after :all do
       @container_db.remove force: true, v: true unless @container_db.nil? || ENV['CIRCLECI']
     end
-  end
+	end
 end

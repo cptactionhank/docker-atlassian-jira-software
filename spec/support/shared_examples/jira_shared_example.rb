@@ -1,7 +1,4 @@
-require 'timeout'
-require 'spec_helper'
-
-shared_examples 'an acceptable JIRA instance' do |database_examples|
+shared_examples 'an acceptable JIRA Service Desk instance' do |database_examples|
 	include_context 'a buildable docker image', '.', Env: ["CATALINA_OPTS=-Xms1024m -Xmx2048m -Datlassian.plugins.enable.wait=#{Docker::DSL.timeout} -Datlassian.darkfeature.jira.onboarding.feature.disabled=true"]
 
 	describe 'when starting a JIRA Software instance' do
@@ -15,14 +12,19 @@ shared_examples 'an acceptable JIRA instance' do |database_examples|
 	end
 
 	describe 'Going through the setup process' do
+		subject { page }
+
 		before :all do
 			@container.setup_capybara_url tcp: 8080
 			visit '/'
+			sleep 10
+			visit '/'
 		end
 
-		subject { page }
-
 		context 'when visiting the root page' do
+			it 'Should wait for AJAX loader when present' do
+				is_expected.to have_content 'JIRA setup'
+      end
 			it { expect(current_path).to match '/secure/SetupMode!default.jspa' }
 			it { is_expected.to have_css 'form#jira-setup-mode' }
 			it { is_expected.to have_css 'div[data-choice-value=classic]' }
