@@ -16,9 +16,10 @@ shared_examples 'an acceptable JIRA Service Desk instance' do |database_examples
 
 		before :all do
 			@container.setup_capybara_url tcp: 8080
-			visit '/'
-			sleep 10
-			visit '/'
+			until current_path === '/secure/SetupMode!default.jspa'
+				visit '/'
+				puts "Status code: #{page.status_code}"
+			end
 		end
 
 		context 'when visiting the root page' do
