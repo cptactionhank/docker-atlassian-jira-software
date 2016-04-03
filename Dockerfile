@@ -26,9 +26,9 @@ RUN set -x \
     && chown -R daemon:daemon  "${JIRA_INSTALL}/logs" \
     && chown -R daemon:daemon  "${JIRA_INSTALL}/temp" \
     && chown -R daemon:daemon  "${JIRA_INSTALL}/work" \
-    && touch --date "@0"       "/opt/atlassian/jira/conf/server.xml" \
     && sed --in-place          "s/java version/openjdk version/g" "${JIRA_INSTALL}/bin/check-java.sh" \
-    && echo -e                 "\njira.home=$JIRA_HOME" >> "${JIRA_INSTALL}/atlassian-jira/WEB-INF/classes/jira-application.properties"
+    && echo -e                 "\njira.home=$JIRA_HOME" >> "${JIRA_INSTALL}/atlassian-jira/WEB-INF/classes/jira-application.properties" \
+    && touch -d "@0"           "${JIRA_INSTALL}/conf/server.xml"
 
 # Use the default unprivileged account. This could be considered bad practice
 # on systems where multiple processes end up being executed by 'daemon' but
@@ -41,7 +41,7 @@ EXPOSE 8080
 # Set volume mount points for installation and home directory. Changes to the
 # home directory needs to be persisted as well as parts of the installation
 # directory due to eg. logs.
-VOLUME ["/var/atlassian/jira"]
+VOLUME ["/var/atlassian/jira", "/opt/atlassian/jira/logs"]
 
 # Set the default working directory as the installation directory.
 WORKDIR /var/atlassian/jira
