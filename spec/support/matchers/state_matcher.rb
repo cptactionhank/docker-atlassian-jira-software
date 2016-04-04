@@ -7,14 +7,14 @@ module Docker
     extend RSpec::Matchers::DSL
 
     class StateMatcher < RSpec::Matchers::BuiltIn::Include
-      alias_method :parent_matches?, :matches?
+      alias parent_matches? matches?
 
       def initialize(*expected)
         @expected = expected
       end
 
       def matches?(actual)
-        parent_matches? actual.json['State']
+        parent_matches?(actual.json['State'])
       end
 
       def description
