@@ -12,3 +12,5 @@ gem 'archive-tar-minitar'
 gem 'rspec_junit_formatter'
 
 gem 'pry'
+gem 'pry-rescue'
+gem 'pry-byebug'

@@ -9,7 +9,7 @@ CURRENT_VERSION=$(sed -nr 's/ENV JIRA_VERSION[[:space:]]*(.+)/\1/p' Dockerfile)
 # Obtain the latest Atlassian JIRA version by going to the JSON version feed
 # information to get a JSONP formatted response, strip the output to retrieve
 # the actual content and then get the version number from the first entry.
-curl -Ls 'https://my.atlassian.com/download/feeds/eap/jira-software.json' | sed 's/downloads(\(.*\))/\1/g' | jq -r '.[] | select(.description | test("TAR\\.GZ Archive")) | ("" + .zipUrl + " " + .version)' | while read -r URL VERSION
+curl -Ls 'https://my.atlassian.com/download/feeds/eap/jira-software.json' | sed 's/downloads(\(.*\))/\1/g' | jq -r '.[] | select(.description | test("TAR\\.GZ Archive")) | ("" + .zipUrl + " " + .version)' | head -n 1 | while read -r URL VERSION
 do
 
 	if [ "x${CURRENT_VERSION}" == "x" ]; then
