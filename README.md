@@ -1,4 +1,4 @@
-[![CircleCI Build Status](https://img.shields.io/circleci/project/cptactionhank/docker-atlassian-jira/eap.svg?label=CircleCI)](https://circleci.com/gh/cptactionhank/docker-atlassian-jira) [![Open Issues](https://img.shields.io/github/issues/cptactionhank/docker-atlassian-jira.svg)](https://github.com/cptactionhank/docker-atlassian-jira/issues) [![Stars on GitHub](https://img.shields.io/github/stars/cptactionhank/docker-atlassian-jira.svg)](https://github.com/cptactionhank/docker-atlassian-jira/stargazers) [![Forks on GitHub](https://img.shields.io/github/forks/cptactionhank/docker-atlassian-jira.svg)](https://github.com/cptactionhank/docker-atlassian-jira/network) [![Stars on Docker Hub](https://img.shields.io/docker/stars/cptactionhank/atlassian-jira.svg)](https://hub.docker.com/r/cptactionhank/atlassian-jira/) [![Pulls on Docker Hub](https://img.shields.io/docker/pulls/cptactionhank/atlassian-jira.svg)](https://hub.docker.com/r/cptactionhank/atlassian-jira/) [![Friends of cptactionhank](https://img.shields.io/badge/donation-PayPal-blue.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=maage@dotmaage.dk&item_name=Friends+of+cptactionhank&item_number=docker-atlassian-jira-software)
+[![CircleCI Build Status](https://img.shields.io/circleci/project/cptactionhank/docker-atlassian-jira-software/eap.svg?label=CircleCI)](https://circleci.com/gh/cptactionhank/docker-atlassian-jira) [![Open Issues](https://img.shields.io/github/issues/cptactionhank/docker-atlassian-jira.svg)](https://github.com/cptactionhank/docker-atlassian-jira-software/issues) [![Stars on GitHub](https://img.shields.io/github/stars/cptactionhank/docker-atlassian-jira.svg)](https://github.com/cptactionhank/docker-atlassian-jira-software/stargazers) [![Forks on GitHub](https://img.shields.io/github/forks/cptactionhank/docker-atlassian-jira.svg)](https://github.com/cptactionhank/docker-atlassian-jira-software/network) [![Stars on Docker Hub](https://img.shields.io/docker/stars/cptactionhank/atlassian-jira.svg)](https://hub.docker.com/r/cptactionhank/atlassian-jira-software/) [![Pulls on Docker Hub](https://img.shields.io/docker/pulls/cptactionhank/atlassian-jira.svg)](https://hub.docker.com/r/cptactionhank/atlassian-jira-software/)
 
 # Atlassian JIRA Software Early Access Program in a Docker container
 
@@ -15,7 +15,7 @@ If you want to help out, you can check out the contribution section further down
 
 To quickly get started running a JIRA Software Early Access Program instance, use the following command:
 ```bash
-docker run --detach --publish 8080:8080 cptactionhank/atlassian-jira:eap
+docker run --detach --publish 8080:8080 cptactionhank/atlassian-jira-software:eap
 ```
 
 Then simply navigate your preferred browser to `http://[dockerhost]:8080` and finish the configuration.
