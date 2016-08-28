@@ -6,7 +6,8 @@ shared_examples 'using a PostgreSQL database' do
       # allow some time for the DOM to change
       sleep 1
       # fill in database configuration
-      select 'PostgreSQL', from: 'jira-setup-database-field-database-type'
+      # select 'PostgreSQL', from: 'jira-setup-database-field-database-type'
+      fill_in 'jira-setup-database-field-database-type-field', with: 'PostgreSQL'
       fill_in 'jdbcHostname', with: @container_db.host
       fill_in 'jdbcPort', with: '5432'
       fill_in 'jdbcDatabase', with: 'jiradb'
