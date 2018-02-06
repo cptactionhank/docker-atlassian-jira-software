@@ -1,13 +1,13 @@
-describe 'Atlassian JIRA Software with Embedded Database' do
-  include_examples 'a buildable Docker image', '.', env: ["CATALINA_OPTS=-Xms1024m -Xmx1024m -XX:+UseG1GC -Datlassian.plugins.enable.wait=#{Docker::DSL.timeout} -Datlassian.darkfeature.jira.onboarding.feature.disabled=true"]
+describe 'Atlassian JIRA with Embedded Database' do
+  include_examples 'a buildable Docker image', '.', env: ["CATALINA_OPTS=-Xms2048m -Xmx2048m -XX:+UseG1GC -Datlassian.plugins.enable.wait=#{Docker::DSL.timeout} -Datlassian.darkfeature.jira.onboarding.feature.disabled=true"]
 
-  include_examples 'an acceptable JIRA Software instance', 'using an embedded database'
+  include_examples 'an acceptable JIRA instance', 'using an embedded database'
 end
 
-# describe 'Atlassian JIRA Software with PostgreSQL 9.3 Database' do
+# describe 'Atlassian JIRA with PostgreSQL 9.3 Database' do
 #   include_examples 'a buildable Docker image', '.', env: ["CATALINA_OPTS=-Xms1024m -Xmx1024m -XX:+UseG1GC -Datlassian.plugins.enable.wait=#{Docker::DSL.timeout} -Datlassian.darkfeature.jira.onboarding.feature.disabled=true"]
-# 
-#   include_examples 'an acceptable JIRA Software instance', 'using a PostgreSQL database' do
+#
+#   include_examples 'an acceptable JIRA instance', 'using a PostgreSQL database' do
 #     before :all do
 #       Docker::Image.create fromImage: 'postgres:9.3'
 #       # Create and run a PostgreSQL 9.3 container instance
@@ -32,11 +32,11 @@ end
 #     end
 #   end
 # end
-# 
-# describe 'Atlassian JIRA Software with MySQL 5.6 Database' do
+
+# describe 'Atlassian JIRA with MySQL 5.6 Database' do
 #   include_examples 'a buildable Docker image', '.', env: ["CATALINA_OPTS=-Xms1024m -Xmx1024m -XX:+UseG1GC -Datlassian.plugins.enable.wait=#{Docker::DSL.timeout} -Datlassian.darkfeature.jira.onboarding.feature.disabled=true"]
-# 
-#   include_examples 'an acceptable JIRA Software instance', 'using a MySQL database' do
+#
+#   include_examples 'an acceptable JIRA instance', 'using a MySQL database' do
 #     before :all do
 #       Docker::Image.create fromImage: 'mysql:5.6'
 #       # Create and run a MySQL 5.6 container instance
@@ -61,8 +61,8 @@ end
 #     end
 #   end
 # end
-# 
-# describe 'Atlassian JIRA Software behind reverse proxy' do
+
+# describe 'Atlassian JIRA behind reverse proxy' do
 #   include_examples 'a buildable Docker image', '.',
 #     env: [
 #       "CATALINA_OPTS=-Xms1024m -Xmx1024m -XX:+UseG1GC -Datlassian.plugins.enable.wait=#{Docker::DSL.timeout} -Datlassian.darkfeature.jira.onboarding.feature.disabled=true",
@@ -71,8 +71,8 @@ end
 #       'X_PROXY_SCHEME=http',
 #       'X_PATH=/jira-path'
 #     ]
-# 
-#   include_examples 'an acceptable JIRA Software instance', 'using an embedded database' do
+#
+#   include_examples 'an acceptable JIRA instance', 'using an embedded database' do
 #     before :all do
 #       image = Docker::Image.build_from_dir '.docker/nginx'
 #       # Create and run a nginx reverse proxy container instance
