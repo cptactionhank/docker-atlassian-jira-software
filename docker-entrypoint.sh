@@ -18,4 +18,9 @@ if [ "$(stat -c "%Y" "${JIRA_INSTALL}/conf/server.xml")" -eq "0" ]; then
   fi
 fi
 
+if [ -f ${JIRA_INSTALL}/bin/setenv.sh ]; then
+  sed -i "/JVM_MINIMUM_MEMORY=/c\JVM_MINIMUM_MEMORY=\"${JVM_MINIMUM_MEMORY}\"" ${JIRA_INSTALL}/bin/setenv.sh
+  sed -i "/JVM_MAXIMUM_MEMORY=/c\JVM_MAXIMUM_MEMORY=\"${JVM_MAXIMUM_MEMORY}\"" ${JIRA_INSTALL}/bin/setenv.sh
+fi
+
 exec "$@"
