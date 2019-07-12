@@ -51,4 +51,4 @@ ENTRYPOINT ["/docker-entrypoint.sh"]
 
 # Run Atlassian JIRA as a foreground process by default.
 CMD ["/opt/atlassian/jira/bin/start-jira.sh", "-fg"]
-HEALTHCHECK --interval=5s --timeout=5s --retries=3 CMD wget localhost:8080/status -q -O - > /dev/null 2>&1
+HEALTHCHECK --interval=60s --timeout=5s --retries=3 CMD wget localhost:8080/status -q -O - > /dev/null 2>&1
