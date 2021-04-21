@@ -18,4 +18,12 @@ if [ "$(stat -c "%Y" "${JIRA_INSTALL}/conf/server.xml")" -eq "0" ]; then
   fi
 fi
 
+if [ "$(stat -c "%Y" "${JIRA_INSTALL}/atlassian-jira/WEB-INF/classes/seraph-config.xml")" -eq "0" ]; then
+  if [ "${X_CROWD_SSO}" = "true" ]; then
+    xmlstarlet ed --inplace -u "/security-config/authenticator[@class='com.atlassian.jira.security.login.JiraSeraphAuthenticator']/@class" -v "com.atlassian.jira.security.login.SSOSeraphAuthenticator" "${JIRA_INSTALL}/atlassian-jira/WEB-INF/classes/seraph-config.xml"
+    export CATALINA_OPTS="${CATALINA_OPTS} -Dcrowd.properties=${JIRA_HOME}/crowd.properties"
+  fi
+fi
+
+
 exec "$@"
